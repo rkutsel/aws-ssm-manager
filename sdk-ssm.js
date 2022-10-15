@@ -1,6 +1,6 @@
 import AWS from "aws-sdk";
 
-export default function createSecret(
+export function createSecret(
   secretname,
   secretvalue,
   profile,
@@ -25,7 +25,26 @@ export default function createSecret(
       console.log(err, err.stack);
     }
     console.log(
-      `######################\nSecret created!\nprofile: ${profile}\nregion: ${region}\nsecretname: ${secretname}\n######################`
+      `######################\n# Secret created!\n# profile: ${profile}\n# region: ${region}\n# secretname: ${secretname}\n######################`
+    );
+  });
+}
+
+export function deleteSecret(secretname, profile, region) {
+  process.env.AWS_PROFILE = profile;
+
+  const ssm = new AWS.SSM({ region: region });
+
+  const params = {
+    Name: secretname,
+  };
+
+  ssm.deleteParameter(params, (err, data) => {
+    if (err) {
+      console.log(err, err.stack);
+    }
+    console.log(
+      `######################\n# Secret deleted!\n# profile: ${profile}\n# region: ${region}\n# secretname: ${secretname}\n######################`
     );
   });
 }
