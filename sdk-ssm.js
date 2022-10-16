@@ -25,7 +25,7 @@ export function createSecret(
       console.log(err, err.stack);
     }
     console.log(
-      `######################\n# Secret created!\n# profile: ${profile}\n# region: ${region}\n# secretname: ${secretname}\n######################`
+      `######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
     );
   });
 }
@@ -44,7 +44,7 @@ export function deleteSecret(secretname, profile, region) {
       console.log(err, err.stack);
     }
     console.log(
-      `######################\n# Secret deleted!\n# profile: ${profile}\n# region: ${region}\n# secretname: ${secretname}\n######################`
+      `######################\n# SECRET DELETED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
     );
   });
 }
