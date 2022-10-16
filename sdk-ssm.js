@@ -22,12 +22,18 @@ export function createSecret(
   };
 
   ssm.putParameter(config, (err, data) => {
-    if (err) {
-      console.log(err, err.stack);
+    if (data) {
+      console.log(
+        data,
+        typeof data,
+        `######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
+      );
     }
-    console.log(
-      `######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
-    );
+    if (err) {
+      console.log(
+        `RUNTIME ERROR!\n MESSAGE: ${err.message}\n, CODE: ${err.code}\n, TIME: ${err.time}\n`
+      );
+    }
     init();
   });
 }
@@ -42,12 +48,18 @@ export function deleteSecret(secretname, profile, region) {
   };
 
   ssm.deleteParameter(params, (err, data) => {
-    if (err) {
-      console.log(err, err.stack);
+    if (data) {
+      console.log(
+        data,
+        typeof data,
+        `######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
+      );
     }
-    console.log(
-      `######################\n# SECRET DELETED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
-    );
+    if (err) {
+      console.log(
+        `RUNTIME ERROR!\n MESSAGE: ${err.message}\n, CODE: ${err.code}\n, TIME: ${err.time}\n`
+      );
+    }
     init();
   });
 }
