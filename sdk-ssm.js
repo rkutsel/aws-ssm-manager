@@ -1,4 +1,5 @@
 import AWS from "aws-sdk";
+import init from "./main.js";
 
 export function createSecret(
   secretname,
@@ -27,6 +28,7 @@ export function createSecret(
     console.log(
       `######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
     );
+    init();
   });
 }
 
@@ -46,5 +48,6 @@ export function deleteSecret(secretname, profile, region) {
     console.log(
       `######################\n# SECRET DELETED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
     );
+    init();
   });
 }

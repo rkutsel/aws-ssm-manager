@@ -5,7 +5,7 @@
   "type": "module",
   "node": ">=14.16",
   "scripts": {
-    "start": "node main.js"
+    "start": "node app.js"
   },
   "author": "Roman Kutsel",
   "license": "MIT",
