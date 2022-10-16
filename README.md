@@ -46,4 +46,26 @@ found 0 vulnerabilities
 
 ## Usage
 
-From the `root` directory run `npm start` which should start the interactive prompt with the first question.
+After the installation is complete, you should be able to run it. From the `root` directory run:
+
+```bash
+make start
+```
+
+OR
+
+```bash
+npm start
+```
+
+A successful run should start the interactive prompt with the initial question. Expected output:
+
+```bash
+make start
+node app.js
+Starting the app...
+? Choose action type: (Use arrow keys)
+❯ Create New Secret
+  Delete Existing Secret
+  Exit
+```

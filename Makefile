@@ -1,10 +1,13 @@
 init:
-	echo '>>>INSTALLING LOCAL DEPENDENCIES...\n'
-	npm i 
-	echo '############!INITIALIZING!############\n'
-	echo '!!!!!!!!!!MAKE SURE to HAVE:!!!!!!!!!!\n'
-	echo '#1.Node.JS, aws cli, python installed#\n'
-	echo '#2.Have your aws profiles configured #\n'
-	echo '#3.Authenticated into AWS            #\n'
-	echo '############!INITIALIZING!############\n'
+	@echo ">>>INSTALLING LOCAL DEPENDENCIES<<<"
+	npm install
+	@echo "\n"
+	@echo "############!INITIALIZING!############"
+	@echo "!!!!!!!!!!MAKE SURE to HAVE!!!!!!!!!!!"
+	@echo "#(1)nodejs, aws cli, python installed#"
+	@echo "#(2)Have your aws profiles configured#"
+	@echo "#(3)Authenticated into AWS ###########"
+	@echo "######################################"
 	npm start
+start:
+	node app.js
