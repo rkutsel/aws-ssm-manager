@@ -1,5 +1,6 @@
 import inquirer from "inquirer";
 import parseAwsConfig from "./parser.js";
+import { awsRegions } from "./config.js";
 
 export function initialQuestion() {
   return inquirer.prompt([
@@ -7,12 +8,12 @@ export function initialQuestion() {
       type: "list",
       name: "actionType",
       message: "Choose action type:",
-      choices: ["Create New Secret", "Delete Existing Secret"],
+      choices: ["Create New Secret", "Delete Existing Secret", "Exit"],
     },
   ]);
 }
 
-export function createQuestions() {
+export function askCreate() {
   return inquirer.prompt([
     {
       type: "list",
@@ -27,7 +28,7 @@ export function createQuestions() {
       type: "list",
       name: "awsRegion",
       message: "Choose AWS region",
-      choices: ["US-WEST-2", "US-EAST-1", "EU-WEST-1"],
+      choices: awsRegions,
       filter(val) {
         return val.toLowerCase();
       },
@@ -44,6 +45,17 @@ export function createQuestions() {
       mask: "*",
     },
     {
+      type: "list",
+      name: "chooseToTag",
+      message: "Would you like to add tags?",
+      choices: ["YES", "NO"],
+    },
+  ]);
+}
+
+export function askTag() {
+  return inquirer.prompt([
+    {
       type: "editor",
       name: "tags",
       message: "Press enter if you'd like to add tags OR CNTRL + C to EXIT",
@@ -59,7 +71,7 @@ export function createQuestions() {
   ]);
 }
 
-export function deleteQuestions() {
+export function askDelete() {
   return inquirer.prompt([
     {
       type: "list",

@@ -1,4 +1,4 @@
-import { initialQuestion, createQuestions, deleteQuestions } from "./input.js";
+import { initialQuestion, askCreate, askDelete, askTag } from "./input.js";
 import { createSecret, deleteSecret } from "./sdk-ssm.js";
 
 initialQuestion().then((answer) => {
@@ -6,19 +6,26 @@ initialQuestion().then((answer) => {
 
   switch (action) {
     case "Create New Secret":
-      createQuestions().then((answers) => {
+      askCreate().then((answers) => {
         const {
           awsAccount: profile,
           awsRegion: region,
           secretName: secret,
           secretValue: value,
-          tags: tags,
+          chooseToTag: toTag,
         } = answers;
-        createSecret(secret, value, profile, region, tags);
+        if (toTag === "YES") {
+          askTag().then((answer) => {
+            const { tags: tags } = answer;
+            createSecret(secret, value, profile, region, tags);
+          });
+        } else {
+          createSecret(secret, value, profile, region);
+        }
       });
       break;
     case "Delete Existing Secret":
-      deleteQuestions().then((answers) => {
+      askDelete().then((answers) => {
         const {
           awsAccount: profile,
           awsRegion: region,
@@ -26,6 +33,9 @@ initialQuestion().then((answer) => {
         } = answers;
         deleteSecret(secret, profile, region);
       });
+      break;
+    case "Exit":
+      console.log("Exited cli prompt.");
       break;
   }
 });

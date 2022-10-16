@@ -5,7 +5,7 @@ export function createSecret(
   secretvalue,
   profile,
   region,
-  tags,
+  tags = null,
   override = false
 ) {
   process.env.AWS_PROFILE = profile;
