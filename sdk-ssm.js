@@ -24,8 +24,6 @@ export function createSecret(
   ssm.putParameter(config, (err, data) => {
     if (data) {
       console.log(
-        data,
-        typeof data,
         `######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
       );
     }
@@ -50,9 +48,7 @@ export function deleteSecret(secretname, profile, region) {
   ssm.deleteParameter(params, (err, data) => {
     if (data) {
       console.log(
-        data,
-        typeof data,
-        `######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
+        `######################\n# SECRET DELETED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
       );
     }
     if (err) {

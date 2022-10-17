@@ -59,7 +59,8 @@ export function askTag() {
       type: "editor",
       name: "tags",
       message: "Press enter if you'd like to add tags OR CNTRL + C to EXIT",
-      default: '[{"Key": "KEY_NAME","Value": "KEY_VALUE"}]',
+      default:
+        '[{"Key": "Name","Value": "Name"}, {"Key": "Description","Value": "Description"}, {"Key": "Owner","Value": "Dev"}, {"Key": "Request number","Value": "REQUEST-XXXX"}]',
       validate(text) {
         if (text.split("\n").length < 1) {
           return "Must be at least 1 line long.";
