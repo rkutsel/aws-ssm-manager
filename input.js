@@ -8,7 +8,12 @@ export function initialQuestion() {
       type: "list",
       name: "actionType",
       message: "Choose action type:",
-      choices: ["Create New Secret", "Delete Existing Secret", "Exit"],
+      choices: [
+        "Create New Secret",
+        "Get Secrets",
+        "Delete Existing Secret",
+        "Exit",
+      ],
     },
   ]);
 }
@@ -68,6 +73,41 @@ export function askTag() {
         return true;
       },
       waitUserInput: true,
+    },
+  ]);
+}
+
+export function askGet() {
+  return inquirer.prompt([
+    {
+      type: "list",
+      name: "awsAccount",
+      message: "Choose AWS account from the list:",
+      choices: parseAwsConfig,
+      filter(val) {
+        return val.slice(1, -1);
+      },
+    },
+    {
+      type: "list",
+      name: "awsRegion",
+      message: "Choose AWS region",
+      choices: ["US-WEST-2", "US-EAST-1", "EU-WEST-1"],
+      filter(val) {
+        return val.toLowerCase();
+      },
+    },
+    {
+      type: "list",
+      name: "secretType",
+      message: "Choose secret type to display:",
+      choices: ["SecureString", "String"],
+    },
+    {
+      type: "list",
+      name: "outputFormat",
+      message: "Choose format type to display:",
+      choices: ["Text", "JSON"],
     },
   ]);
 }

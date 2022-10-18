@@ -1,5 +1,11 @@
-import { initialQuestion, askCreate, askDelete, askTag } from "./input.js";
-import { createSecret, deleteSecret } from "./sdk-ssm.js";
+import {
+  initialQuestion,
+  askCreate,
+  askGet,
+  askDelete,
+  askTag,
+} from "./input.js";
+import { getSecrets, createSecret, deleteSecret } from "./sdk-ssm.js";
 
 export default function init() {
   initialQuestion().then((answer) => {
@@ -23,6 +29,17 @@ export default function init() {
           } else {
             createSecret(secret, value, profile, region);
           }
+        });
+        break;
+      case "Get Secrets":
+        askGet().then((answers) => {
+          const {
+            awsAccount: profile,
+            awsRegion: region,
+            secretType: type,
+            outputFormat: format,
+          } = answers;
+          getSecrets(type, format, profile, region);
         });
         break;
       case "Delete Existing Secret":
