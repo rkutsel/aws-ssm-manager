@@ -2,10 +2,16 @@ import {
   initialQuestion,
   askCreate,
   askGet,
+  askUpdate,
   askDelete,
   askTag,
 } from "./input.js";
-import { getSecrets, createSecret, deleteSecret } from "./sdk-ssm.js";
+import {
+  createSecret,
+  getSecrets,
+  updateSecret,
+  deleteSecret,
+} from "./sdk-ssm.js";
 
 export default function init() {
   initialQuestion().then((answer) => {
@@ -31,7 +37,7 @@ export default function init() {
           }
         });
         break;
-      case "Get Secrets":
+      case "Get All Secrets":
         askGet().then((answers) => {
           const {
             awsAccount: profile,
@@ -40,6 +46,17 @@ export default function init() {
             outputFormat: format,
           } = answers;
           getSecrets(type, format, profile, region);
+        });
+        break;
+      case "Update Existing Secret":
+        askUpdate().then((answers) => {
+          const {
+            awsAccount: profile,
+            awsRegion: region,
+            secretName: secret,
+            secretValue: value,
+          } = answers;
+          updateSecret(secret, value, profile, region);
         });
         break;
       case "Delete Existing Secret":

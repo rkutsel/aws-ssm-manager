@@ -1,16 +1,17 @@
 import inquirer from "inquirer";
 import parseAwsConfig from "./parser.js";
-import { awsRegions } from "./config.js";
+import { ssmConfigOptions } from "./config.js";
 
 export function initialQuestion() {
   return inquirer.prompt([
     {
       type: "list",
       name: "actionType",
-      message: "Choose action type:",
+      message: "Choose action type:\n  ======================",
       choices: [
         "Create New Secret",
-        "Get Secrets",
+        "Get All Secrets",
+        "Update Existing Secret",
         "Delete Existing Secret",
         "Exit",
       ],
@@ -33,7 +34,7 @@ export function askCreate() {
       type: "list",
       name: "awsRegion",
       message: "Choose AWS region",
-      choices: awsRegions,
+      choices: ssmConfigOptions.regions,
       filter(val) {
         return val.toLowerCase();
       },
@@ -92,7 +93,7 @@ export function askGet() {
       type: "list",
       name: "awsRegion",
       message: "Choose AWS region",
-      choices: ["US-WEST-2", "US-EAST-1", "EU-WEST-1"],
+      choices: ssmConfigOptions.regions,
       filter(val) {
         return val.toLowerCase();
       },
@@ -112,6 +113,40 @@ export function askGet() {
   ]);
 }
 
+export function askUpdate() {
+  return inquirer.prompt([
+    {
+      type: "list",
+      name: "awsAccount",
+      message: "Choose AWS account from the list:",
+      choices: parseAwsConfig,
+      filter(val) {
+        return val.slice(1, -1);
+      },
+    },
+    {
+      type: "list",
+      name: "awsRegion",
+      message: "Choose AWS region",
+      choices: ssmConfigOptions.regions,
+      filter(val) {
+        return val.toLowerCase();
+      },
+    },
+    {
+      type: "input",
+      name: "secretName",
+      message: "Provide secret name. i.e. /DEV/SECRET:",
+    },
+    {
+      type: "password",
+      name: "secretValue",
+      message: "Provide secret value",
+      mask: "*",
+    },
+  ]);
+}
+
 export function askDelete() {
   return inquirer.prompt([
     {
@@ -127,7 +162,7 @@ export function askDelete() {
       type: "list",
       name: "awsRegion",
       message: "Choose AWS region",
-      choices: ["US-WEST-2", "US-EAST-1", "EU-WEST-1"],
+      choices: ssmConfigOptions.regions,
       filter(val) {
         return val.toLowerCase();
       },
