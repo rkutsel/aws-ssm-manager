@@ -61,11 +61,14 @@ npm start
 A successful run should start the interactive prompt with the initial question. Expected output:
 
 ```bash
-make start
+➜ make start
 node app.js
 Starting the app...
-? Choose action type: (Use arrow keys)
+? Choose action type:
+  ====================== (Use arrow keys)
 ❯ Create New Secret
+  Get All Secrets
+  Update Existing Secret
   Delete Existing Secret
   Exit
 ```
