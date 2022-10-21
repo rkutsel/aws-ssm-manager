@@ -21,10 +21,10 @@ export default function init() {
       case "Create New Secret":
         askCreate().then((answers) => {
           const {
-            awsAccount: profile,
-            awsRegion: region,
             secretName: secret,
             secretValue: value,
+            awsAccount: profile,
+            awsRegion: region,
             chooseToTag: toTag,
           } = answers;
           if (toTag === "YES") {
@@ -40,10 +40,10 @@ export default function init() {
       case "Get All Secrets":
         askGet().then((answers) => {
           const {
-            awsAccount: profile,
-            awsRegion: region,
             secretType: type,
             outputFormat: format,
+            awsAccount: profile,
+            awsRegion: region,
           } = answers;
           getSecrets(type, format, profile, region);
         });
@@ -51,10 +51,10 @@ export default function init() {
       case "Update Existing Secret":
         askUpdate().then((answers) => {
           const {
-            awsAccount: profile,
-            awsRegion: region,
             secretName: secret,
             secretValue: value,
+            awsAccount: profile,
+            awsRegion: region,
           } = answers;
           updateSecret(secret, value, profile, region);
         });
@@ -62,9 +62,9 @@ export default function init() {
       case "Delete Existing Secret":
         askDelete().then((answers) => {
           const {
+            secretName: secret,
             awsAccount: profile,
             awsRegion: region,
-            secretName: secret,
           } = answers;
           deleteSecret(secret, profile, region);
         });

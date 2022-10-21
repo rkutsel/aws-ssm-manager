@@ -2,20 +2,14 @@ import AWS from "aws-sdk";
 import init from "./main.js";
 import { ssmConfigOptions } from "./config.js";
 
-export function createSecret(
-  secretname,
-  secretvalue,
-  profile,
-  region,
-  tags = null
-) {
+export function createSecret(secret, value, profile, region, tags = null) {
   process.env.AWS_PROFILE = profile;
 
   const ssm = new AWS.SSM({ region: region });
 
   const config = {
-    Name: secretname,
-    Value: secretvalue,
+    Name: secret,
+    Value: value,
     Type: "SecureString",
     Overwrite: ssmConfigOptions.override,
     Tags: JSON.parse(tags),
@@ -25,7 +19,7 @@ export function createSecret(
   ssm.putParameter(config, (err, data) => {
     if (data) {
       console.log(
-        `######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
+        `######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n######################`
       );
     }
     if (err) {
@@ -82,20 +76,20 @@ export function getSecrets(type, format, profile, region) {
   _getRecursive();
 }
 
-export function updateSecret(secretname, secretvalue, profile, region) {
+export function updateSecret(secret, value, profile, region) {
   process.env.AWS_PROFILE = profile;
 
   const ssm = new AWS.SSM({ region: region });
 
   const config = {
-    Name: secretname,
-    Value: secretvalue,
+    Name: secret,
+    Value: value,
     Type: "SecureString",
     Overwrite: true,
     Tier: ssmConfigOptions.tier,
   };
 
-  ssm.getParameter({ Name: secretname }, function (err, data) {
+  ssm.getParameter({ Name: secret }, function (err, data) {
     if (err) {
       console.log(
         `RUNTIME ERROR!\n MESSAGE: ${err.message}\n, CODE: ${err.code}\n, TIME: ${err.time}\n`
@@ -105,7 +99,7 @@ export function updateSecret(secretname, secretvalue, profile, region) {
       ssm.putParameter(config, (err, data) => {
         if (data) {
           console.log(
-            `######################\n# SECRET VALUE UPDATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
+            `######################\n# SECRET VALUE UPDATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n######################`
           );
         }
         if (err) {
@@ -119,19 +113,19 @@ export function updateSecret(secretname, secretvalue, profile, region) {
   });
 }
 
-export function deleteSecret(secretname, profile, region) {
+export function deleteSecret(secret, profile, region) {
   process.env.AWS_PROFILE = profile;
 
   const ssm = new AWS.SSM({ region: region });
 
   const params = {
-    Name: secretname,
+    Name: secret,
   };
 
   ssm.deleteParameter(params, (err, data) => {
     if (data) {
       console.log(
-        `######################\n# SECRET DELETED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secretname}\n######################`
+        `######################\n# SECRET DELETED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n######################`
       );
     }
     if (err) {
