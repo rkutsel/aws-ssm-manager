@@ -1,5 +1,5 @@
 {
-  "name": "ssm-secrets-manager",
+  "name": "aws-ssm-manager",
   "version": "0.3.2",
   "description": "Manage Parameter Store Secrets in AWS",
   "type": "module",
@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.1232.0",
+    "aws-ssm-manager": "^0.3.2",
     "inquirer": "^9.1.3"
   }
 }
