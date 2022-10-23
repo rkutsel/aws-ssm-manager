@@ -1,9 +1,10 @@
 {
   "name": "ssm-secrets-manager",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Manage Parameter Store Secrets in AWS",
   "type": "module",
   "node": ">=14.16",
+  "bin": "app.js",
   "scripts": {
     "start": "node app.js"
   },
