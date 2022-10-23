@@ -1,6 +1,6 @@
 {
   "name": "aws-ssm-manager",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Manage Parameter Store Secrets in AWS",
   "type": "module",
   "node": ">=14.16",
