@@ -5,6 +5,11 @@
 ## TL;DR
 
 ```bash
+npm install -G aws-ssm-manager
+npx aws-ssm-manager
+```
+
+```bash
 git clone git@github.com:rkutsel/aws-ssm-manager.git
 cd aws-ssm-manager
 make init
