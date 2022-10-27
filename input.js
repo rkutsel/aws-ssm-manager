@@ -1,5 +1,5 @@
 import inquirer from "inquirer";
-import parseAwsConfig from "./parser.js";
+import { parseAwsConfig } from "./parser.js";
 import { ssmConfigOptions } from "./config.js";
 
 export function initialQuestion() {
