@@ -1,5 +1,5 @@
 import inquirer from "inquirer";
-import parseAwsConfig from "./parser.js";
+import { parseAwsConfig } from "./parser.js";
 import { ssmConfigOptions } from "./config.js";
 
 export function initialQuestion() {
@@ -79,6 +79,8 @@ export function askTag() {
 }
 
 export function askGet() {
+  const fmt = ssmConfigOptions.format;
+
   return inquirer.prompt([
     {
       type: "list",
@@ -108,7 +110,7 @@ export function askGet() {
       type: "list",
       name: "outputFormat",
       message: "Choose format type to display:",
-      choices: ["Text", "JSON"],
+      choices: [fmt.json, fmt.text, fmt.file],
     },
   ]);
 }
