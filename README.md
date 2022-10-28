@@ -19,7 +19,9 @@ make init
 
 ## Description
 
-A simple interactive CLI tool that manages your [AWS Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html) secrets. At the moment it's **CRUD** capible which can **CREATE** new secrets and **READ** **UPDATE** **DELETE** existing secrets. It relies on [AWS CLI](https://aws.amazon.com/cli/) for Authentication and Authorization. The interactive menu has a few regions `["US-WEST-2", "US-EAST-1", "EU-WEST-1"]` that are there as an example. This can easily be extended by adding additional AWS regions to the **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
+A simple interactive CLI tool that manages your [AWS Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html) secrets. At the moment it's **CRUD** capible which can **CREATE** new secrets and **READ** **UPDATE** **DELETE** existing ones. Additionally it can save generated output to a JSON file. Found to be useful for offline storage or as a source of truth.    
+
+It relies on [AWS CLI](https://aws.amazon.com/cli/) for Authentication and Authorization. The interactive menu has a few regions `["US-WEST-2", "US-EAST-1", "EU-WEST-1"]` that are there as an example. This can easily be extended by adding additional AWS regions to the **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
 
 ## Some Assumptions
 
@@ -27,6 +29,7 @@ A simple interactive CLI tool that manages your [AWS Parameter Store](https://do
 2. You authenticated into AWS if you're using temporary tokens
 3. Parameter Store Tier => Standard. Can be changed in **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
 4. Override on creation => false. Can be changed in **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
+5. Default directory path => "./output" Can be changed in **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
 
 ## Dependencies
 
