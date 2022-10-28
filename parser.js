@@ -30,7 +30,7 @@ export function isDir() {
 export async function saveToFile(params, profile, region) {
   isDir();
 
-  const data = JSON.stringify(params, null, 2);
+  const input = JSON.stringify(params, null, 2);
   const output = {
     dir: ssmConfigOptions.outputDir,
     head: region.toLowerCase().slice(0, 2),
@@ -40,8 +40,7 @@ export async function saveToFile(params, profile, region) {
   };
   const fileName = `${output.dir}/${output.profile}-${output.head}${output.mid}${output.tail}.json`;
 
-  await fs.writeFile(fileName, data, (err) => {
-    if (err) throw err;
-    console.log("Data written to file");
-  });
+  await fs
+    .writeFile(fileName, input)
+    .then(() => console.log(`Generated output saved to ${fileName}`));
 }
