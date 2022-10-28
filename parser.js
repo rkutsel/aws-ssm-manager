@@ -22,6 +22,7 @@ export function isDir() {
 
   if (!fsSync.existsSync(dir)) {
     console.log(`Creating ${dir} directory...`);
+    console.log("=============================\n");
     fsSync.mkdirSync(dir);
   }
 }
@@ -29,13 +30,15 @@ export function isDir() {
 export async function saveToFile(params, profile, region) {
   isDir();
 
-  const dir = ssmConfigOptions.outputDir;
-  const head = region.toLowerCase().slice(0, 2);
-  const mid = region[3];
-  const tail = region[region.length - 1];
-  const fileName = `${dir}/${profile.toLowerCase()}-${head}${mid}${tail}.json`;
-
-  let data = JSON.stringify(params, null, 2);
+  const data = JSON.stringify(params, null, 2);
+  const output = {
+    dir: ssmConfigOptions.outputDir,
+    head: region.toLowerCase().slice(0, 2),
+    mid: region[3],
+    tail: region[region.length - 1],
+    profile: profile.toLowerCase(),
+  };
+  const fileName = `${output.dir}/${output.profile}-${output.head}${output.mid}${output.tail}.json`;
 
   await fs.writeFile(fileName, data, (err) => {
     if (err) throw err;
