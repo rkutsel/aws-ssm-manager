@@ -1,6 +1,7 @@
 import AWS from "aws-sdk";
 import init from "./main.js";
 import { ssmConfigOptions } from "./config.js";
+import { saveToFile } from "./parser.js";
 
 export function createSecret(secret, value, profile, region, tags = null) {
   process.env.AWS_PROFILE = profile;
@@ -33,6 +34,7 @@ export function createSecret(secret, value, profile, region, tags = null) {
 
 export function getSecrets(type, format, profile, region) {
   process.env.AWS_PROFILE = profile;
+  const fmt = ssmConfigOptions.format;
 
   const ssm = new AWS.SSM({ region: region });
   const params = {
@@ -53,22 +55,30 @@ export function getSecrets(type, format, profile, region) {
           `RUNTIME ERROR!\n MESSAGE: ${err.message}\n, CODE: ${err.code}\n, TIME: ${err.time}\n`
         );
       } else {
-        format === "JSON"
-          ? console.log(data.Parameters)
-          : data.Parameters.map((el) =>
-              console.log(
-                `Secret Name: ${el.Name}\nLast Modified: ${
-                  el.LastModifiedDate
-                }\nLast Modified By: ${
-                  el.LastModifiedUser.split("/")[
-                    el.LastModifiedUser.split("/").length - 1
-                  ]
-                }\n`
-              )
-            );
+        if (format === fmt.json) {
+          console.log(data.Parameters);
+        }
+        if (format === fmt.text) {
+          data.Parameters.map((el) =>
+            console.log(
+              `Secret Name: ${el.Name}\nLast Modified: ${
+                el.LastModifiedDate
+              }\nLast Modified By: ${
+                el.LastModifiedUser.split("/")[
+                  el.LastModifiedUser.split("/").length - 1
+                ]
+              }\n`
+            )
+          );
+        }
+        if (format === fmt.file) {
+          const params = data.Parameters;
+          // const filename = `${profile}-${region}`
+          saveToFile(params, profile, region);
+        }
         if (data.NextToken) {
           params.NextToken = data.NextToken;
-          _getRecursive();
+          _getRecursive(data.Parameters);
         }
       }
     });

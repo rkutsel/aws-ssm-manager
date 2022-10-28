@@ -17,10 +17,28 @@ export async function parseAwsConfig() {
   return profileList;
 }
 
-export async function isDir() {
+export function isDir() {
   const dir = ssmConfigOptions.outputDir;
+
   if (!fsSync.existsSync(dir)) {
     console.log(`Creating ${dir} directory...`);
     fsSync.mkdirSync(dir);
   }
+}
+
+export async function saveToFile(params, profile, region) {
+  isDir();
+
+  const dir = ssmConfigOptions.outputDir;
+  const head = region.toLowerCase().slice(0, 2);
+  const mid = region[3];
+  const tail = region[region.length - 1];
+  const fileName = `${dir}/${profile.toLowerCase()}-${head}${mid}${tail}.json`;
+
+  let data = JSON.stringify(params, null, 2);
+
+  await fs.writeFile(fileName, data, (err) => {
+    if (err) throw err;
+    console.log("Data written to file");
+  });
 }
