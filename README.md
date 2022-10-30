@@ -41,8 +41,6 @@ It relies on [AWS CLI](https://aws.amazon.com/cli/) for Authentication and Autho
 
 > `Python/3.9.11`
 
-`` NOTE: You can quickly check this by running `node -v` for Node.JS and `npm -v` for NPM in your terminal. ``
-
 ### Installing Local Dependencies
 
 Clone the repo `git clone git@github.com:rkutsel/aws-ssm-manager.git` and install local dependencies by running `npm install` in your terminal. A successful installation should look somewhat similar to the one bellow:
