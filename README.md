@@ -8,9 +8,7 @@
 npm install -G aws-ssm-manager
 npx aws-ssm-manager
 ```
-
-***OR***
-
+**OR**
 ```bash
 git clone git@github.com:rkutsel/aws-ssm-manager.git
 cd aws-ssm-manager
@@ -19,7 +17,7 @@ make init
 
 ## Description
 
-A simple interactive CLI tool that manages your [AWS Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html) secrets. At the moment it's **CRUD** capible which can **CREATE** new secrets and **READ** **UPDATE** **DELETE** existing ones. Additionally it can save generated output to a JSON file. Found to be useful for offline storage or as a source of truth.    
+Interactive, **CRUD-capible** CLI tool to manage your [AWS Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html) secrets. It can **CREATE** new secrets, **READ**, **UPDATE**, **DELETE** existing ones. Additionally it can **SAVE** generated output to a `JSON` file. Found to be useful for offline storage or when used as a source of truth.    
 
 It relies on [AWS CLI](https://aws.amazon.com/cli/) for Authentication and Authorization. The interactive menu has a few regions `["US-WEST-2", "US-EAST-1", "EU-WEST-1"]` that are there as an example. This can easily be extended by adding additional AWS regions to the **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
 
@@ -31,7 +29,7 @@ It relies on [AWS CLI](https://aws.amazon.com/cli/) for Authentication and Autho
 4. Override on creation => false. Can be changed in **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
 5. Default directory path => "./output" Can be changed in **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
 
-## Dependencies
+## External Dependencies
 
 > `Node.JS >=14.16`
 
@@ -43,7 +41,7 @@ It relies on [AWS CLI](https://aws.amazon.com/cli/) for Authentication and Autho
 
 ### Installing Local Dependencies
 
-Clone the repo `git clone git@github.com:rkutsel/aws-ssm-manager.git` and install local dependencies by running `npm install` in your terminal. A successful installation should look somewhat similar to the one bellow:
+If you don't want to use it as an `NPM` package, you can do so by clonning the repo `git clone git@github.com:rkutsel/aws-ssm-manager.git` and install local dependencies by running `npm install` in your terminal. A successful installation should look somewhat similar to the one bellow:
 
 ```bash
 added 104 packages, and audited 105 packages in 2s
