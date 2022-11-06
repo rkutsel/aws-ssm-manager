@@ -48,9 +48,10 @@ export function getOneSecret(secret, profile, region) {
       init();
     } else {
       console.log(
-        `######################\n# DECRYPTED SECRET VALUE!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n# SECRETNAME:${data.Parameter.Value}\n######################`
+        `######################\n# DECRYPTED SECRET VALUE!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n# SECRETVALUE:${data.Parameter.Value}\n######################`
       );
     }
+    init();
   });
 }
 
