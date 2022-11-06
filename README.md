@@ -17,7 +17,7 @@ make init
 
 ## Description
 
-Interactive, **CRUD-capible** CLI tool to manage your [AWS Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html) secrets. It can **CREATE** new secrets, **READ**, **UPDATE**, **DELETE** existing ones. Additionally it can **SAVE** generated output to a `JSON` file. Found to be useful for offline storage or when used as a source of truth.    
+Interactive, **CRUD-capible** CLI tool to manage your [AWS Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html) secrets. It can **CREATE** new secrets, **READ**, **UPDATE**, **DELETE** existing ones. Additionally it can **Retrieve** a decrypted value and **SAVE** generated output to a `JSON` file. Found to be useful for offline storage or when used as a source of truth.    
 
 It relies on [AWS CLI](https://aws.amazon.com/cli/) for Authentication and Authorization. The interactive menu has a few regions `["US-WEST-2", "US-EAST-1", "EU-WEST-1"]` that are there as an example. This can easily be extended by adding additional AWS regions to the **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
 
