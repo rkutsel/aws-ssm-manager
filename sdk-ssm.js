@@ -113,6 +113,9 @@ export function getAllSecrets(type, format, profile, region) {
         if (data.NextToken) {
           params.NextToken = data.NextToken;
           _getRecursive();
+        } else {
+          console.log("\nCompleted! Choose Next Action Type Or Exit.\n");
+          init();
         }
       }
     });
