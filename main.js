@@ -7,13 +7,14 @@ import {
   askDelete,
   askTag,
 } from "./input.js";
-import {
-  createSecret,
-  getOneSecret,
-  getAllSecrets,
-  updateSecret,
-  deleteSecret,
-} from "./sdk-ssm.js";
+import // createSecret,
+// getOneSecret,
+// getAllSecrets,
+// updateSecret,
+// deleteSecret,
+"./sdk-ssm.js";
+
+import { ssmSdk } from "./sdk-ssm.js";
 
 export default function init() {
   initialQuestion().then((answer) => {
@@ -32,10 +33,10 @@ export default function init() {
           if (toTag === "YES") {
             askTag().then((answer) => {
               const { tags: tags } = answer;
-              createSecret(secret, value, profile, region, tags);
+              ssmSdk.createOne(secret, value, profile, region, tags);
             });
           } else {
-            createSecret(secret, value, profile, region);
+            ssmSdk.createOne(secret, value, profile, region);
           }
         });
         break;
@@ -47,7 +48,7 @@ export default function init() {
             awsAccount: profile,
             awsRegion: region,
           } = answers;
-          getAllSecrets(type, format, profile, region);
+          ssmSdk.getAll(type, format, profile, region);
         });
         break;
       case "Get Decrypted Secret":
@@ -57,7 +58,7 @@ export default function init() {
             awsAccount: profile,
             awsRegion: region,
           } = answers;
-          getOneSecret(secret, profile, region);
+          ssmSdk.getDecrypted(secret, profile, region);
         });
         break;
       case "Update Existing Secret":
@@ -68,7 +69,7 @@ export default function init() {
             awsAccount: profile,
             awsRegion: region,
           } = answers;
-          updateSecret(secret, value, profile, region);
+          ssmSdk.updateOne(secret, value, profile, region);
         });
         break;
       case "Delete Existing Secret":
@@ -78,7 +79,7 @@ export default function init() {
             awsAccount: profile,
             awsRegion: region,
           } = answers;
-          deleteSecret(secret, profile, region);
+          ssmSdk.deleteOne(secret, profile, region);
         });
         break;
       case "Exit":
