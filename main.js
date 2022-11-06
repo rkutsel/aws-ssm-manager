@@ -7,12 +7,6 @@ import {
   askDelete,
   askTag,
 } from "./input.js";
-import // createSecret,
-// getOneSecret,
-// getAllSecrets,
-// updateSecret,
-// deleteSecret,
-"./sdk-ssm.js";
 
 import { ssmSdk } from "./sdk-ssm.js";
 
