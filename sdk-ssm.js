@@ -32,7 +32,29 @@ export function createSecret(secret, value, profile, region, tags = null) {
   });
 }
 
-export function getSecrets(type, format, profile, region) {
+export function getOneSecret(secret, profile, region) {
+  process.env.AWS_PROFILE = profile;
+  const ssm = new AWS.SSM({ region: region });
+  const params = {
+    Name: secret,
+    WithDecryption: true,
+  };
+
+  ssm.getParameter(params, function (err, data) {
+    if (err) {
+      console.log(
+        `RUNTIME ERROR!\n MESSAGE: ${err.message}\n, CODE: ${err.code}\n, TIME: ${err.time}\n`
+      );
+      init();
+    } else {
+      console.log(
+        `######################\n# DECRYPTED SECRET VALUE!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n# SECRETNAME:${data.Parameter.Value}\n######################`
+      );
+    }
+  });
+}
+
+export function getAllSecrets(type, format, profile, region) {
   process.env.AWS_PROFILE = profile;
   const fmt = ssmConfigOptions.format;
   let jsonObj = [];

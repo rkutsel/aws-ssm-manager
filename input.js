@@ -11,6 +11,7 @@ export function initialQuestion() {
       choices: [
         "Create New Secret",
         "Get All Secrets",
+        "Get Decrypted Secret",
         "Update Existing Secret",
         "Delete Existing Secret",
         "Exit",
@@ -74,6 +75,34 @@ export function askTag() {
         return true;
       },
       waitUserInput: true,
+    },
+  ]);
+}
+
+export function askGetDecrypted() {
+  return inquirer.prompt([
+    {
+      type: "list",
+      name: "awsAccount",
+      message: "Choose AWS account from the list:",
+      choices: parseAwsConfig,
+      filter(val) {
+        return val.slice(1, -1);
+      },
+    },
+    {
+      type: "list",
+      name: "awsRegion",
+      message: "Choose AWS region",
+      choices: ssmConfigOptions.regions,
+      filter(val) {
+        return val.toLowerCase();
+      },
+    },
+    {
+      type: "input",
+      name: "secretName",
+      message: "Provide secret name. i.e. /DEV/SECRET:",
     },
   ]);
 }

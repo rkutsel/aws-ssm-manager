@@ -2,13 +2,15 @@ import {
   initialQuestion,
   askCreate,
   askGet,
+  askGetDecrypted,
   askUpdate,
   askDelete,
   askTag,
 } from "./input.js";
 import {
   createSecret,
-  getSecrets,
+  getOneSecret,
+  getAllSecrets,
   updateSecret,
   deleteSecret,
 } from "./sdk-ssm.js";
@@ -45,7 +47,17 @@ export default function init() {
             awsAccount: profile,
             awsRegion: region,
           } = answers;
-          getSecrets(type, format, profile, region);
+          getAllSecrets(type, format, profile, region);
+        });
+        break;
+      case "Get Decrypted Secret":
+        askGetDecrypted().then((answers) => {
+          const {
+            secretName: secret,
+            awsAccount: profile,
+            awsRegion: region,
+          } = answers;
+          getOneSecret(secret, profile, region);
         });
         break;
       case "Update Existing Secret":
