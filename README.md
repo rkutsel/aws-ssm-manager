@@ -29,16 +29,6 @@ It relies on [AWS CLI](https://aws.amazon.com/cli/) for Authentication and Autho
 4. Override on creation => false. Can be changed in **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
 5. Default directory path => "./output" Can be changed in **[config.js](https://github.com/rkutsel/aws-ssm-manager/blob/main/config.js)** file.
 
-## External Dependencies
-
-> `Node.JS >=14.16`
-
-> `npm >=8.11.0`
-
-> `aws-cli/2.5.0`
-
-> `Python/3.9.11`
-
 ### Installing Local Dependencies
 
 If you don't want to use it as an `NPM` package, you can do so by clonning the repo `git clone git@github.com:rkutsel/aws-ssm-manager.git` and install local dependencies by running `npm install` in your terminal. A successful installation should look somewhat similar to the one bellow:
