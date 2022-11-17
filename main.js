@@ -15,7 +15,7 @@ export default function init() {
     const { actionType: action } = answer;
 
     switch (action) {
-      case "Create New Secret":
+      case "Create New Secret": {
         askCreate().then((answers) => {
           const {
             secretName: secret,
@@ -34,7 +34,8 @@ export default function init() {
           }
         });
         break;
-      case "Get All Secrets":
+      }
+      case "Get All Secrets": {
         askGet().then((answers) => {
           const {
             secretType: type,
@@ -45,7 +46,8 @@ export default function init() {
           ssmSdk.getAll(type, format, profile, region);
         });
         break;
-      case "Get Decrypted Secret":
+      }
+      case "Get Decrypted Secret": {
         askGetDecrypted().then((answers) => {
           const {
             secretName: secret,
@@ -55,7 +57,8 @@ export default function init() {
           ssmSdk.getDecrypted(secret, profile, region);
         });
         break;
-      case "Update Existing Secret":
+      }
+      case "Update Existing Secret": {
         askUpdate().then((answers) => {
           const {
             secretName: secret,
@@ -66,7 +69,8 @@ export default function init() {
           ssmSdk.updateOne(secret, value, profile, region);
         });
         break;
-      case "Delete Existing Secret":
+      }
+      case "Delete Existing Secret": {
         askDelete().then((answers) => {
           const {
             secretName: secret,
@@ -76,9 +80,11 @@ export default function init() {
           ssmSdk.deleteOne(secret, profile, region);
         });
         break;
-      case "Exit":
+      }
+      case "Exit": {
         console.log("Exited cli prompt.");
         break;
+      }
     }
   });
 }
