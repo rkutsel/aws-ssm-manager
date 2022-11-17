@@ -79,11 +79,12 @@ export const ssmSdk = {
           );
         } else {
           switch (format) {
-            case fmt.json:
+            case fmt.json: {
               console.log(data.Parameters);
               break;
+            }
 
-            case fmt.text:
+            case fmt.text: {
               data.Parameters.map((el) =>
                 console.log(
                   `Secret Name: ${el.Name}\nLast Modified: ${
@@ -96,16 +97,18 @@ export const ssmSdk = {
                 )
               );
               break;
+            }
 
-            case fmt.file:
-              !data.NextToken
+            case fmt.file: {
+              data.NextToken
                 ? paramsData.map((el) => {
                     jsonObj.push(el);
-                  }) && saveToFile(jsonObj, profile, region)
+                  })
                 : paramsData.map((el) => {
                     jsonObj.push(el);
-                  });
+                  }) && saveToFile(jsonObj, profile, region);
               break;
+            }
           }
 
           if (data.NextToken) {
