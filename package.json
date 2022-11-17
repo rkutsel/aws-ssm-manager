@@ -10,7 +10,9 @@
   "node": ">=14.16",
   "bin": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "prepare": "husky install", 
+    "lint": "npx rome check ./"
   },
   "author": "Roman Kutsel",
   "license": "MIT",
@@ -27,6 +29,7 @@
     "secrests-manager"
   ],
   "devDependencies": {
+    "husky": "^8.0.2",
     "rome": "^10.0.1"
   }
 }
