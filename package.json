@@ -25,5 +25,8 @@
     "aws-ssm",
     "parameter-store",
     "secrests-manager"
-  ]
+  ],
+  "devDependencies": {
+    "rome": "^10.0.1"
+  }
 }
