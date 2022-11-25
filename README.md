@@ -66,6 +66,7 @@ Starting the app...
   ====================== (Use arrow keys)
 ❯ Create New Secret
   Get All Secrets
+  Get Decrypted Secret
   Update Existing Secret
   Delete Existing Secret
   Exit
