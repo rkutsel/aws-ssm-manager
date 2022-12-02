@@ -17,7 +17,7 @@
   "author": "Roman Kutsel",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.1262.0",
+    "aws-sdk": "^2.1266.0",
     "inquirer": "^9.1.4"
   },
   "keywords": [
