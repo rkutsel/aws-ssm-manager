@@ -11,13 +11,14 @@
   "bin": "app.js",
   "scripts": {
     "start": "node app.js",
-    "prepare": "husky install", 
+    "prepare": "husky install",
     "lint": "npx rome check ./"
   },
   "author": "Roman Kutsel",
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.1266.0",
+    "gradient-string": "^2.0.2",
     "inquirer": "^9.1.4"
   },
   "keywords": [

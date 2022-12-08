@@ -1,4 +1,7 @@
 #! /usr/bin/env node
 import init from "./main.js";
-console.log("Starting the app...");
+import { ssmConfigOptions } from "./config.js";
+
+ssmConfigOptions.greeting
+console.log('Starting the app...');
 init();
