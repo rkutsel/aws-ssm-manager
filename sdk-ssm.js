@@ -87,14 +87,16 @@ export const ssmSdk = {
 
 						case fmt.text: {
 							data.Parameters.map((el) =>
-								console.log(gradient.summer(
-									`Secret Name: ${el.Name}\nLast Modified: ${
-										el.LastModifiedDate
-									}\nLast Modified By: ${
-										el.LastModifiedUser.split("/")[
-											el.LastModifiedUser.split("/").length - 1
-										]
-									}\n`),
+								console.log(
+									gradient.summer(
+										`Secret Name: ${el.Name}\nLast Modified: ${
+											el.LastModifiedDate
+										}\nLast Modified By: ${
+											el.LastModifiedUser.split("/")[
+												el.LastModifiedUser.split("/").length - 1
+											]
+										}\n`,
+									),
 								),
 							);
 							break;
