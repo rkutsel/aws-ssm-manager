@@ -2,6 +2,7 @@ import AWS from "aws-sdk";
 import init from "./main.js";
 import { ssmConfigOptions } from "./config.js";
 import { saveToFile } from "./parser.js";
+import gradient from "gradient-string";
 
 export const ssmSdk = {
 	createOne: (secret, value, profile, region, tags = null) => {
@@ -86,14 +87,14 @@ export const ssmSdk = {
 
 						case fmt.text: {
 							data.Parameters.map((el) =>
-								console.log(
+								console.log(gradient.summer(
 									`Secret Name: ${el.Name}\nLast Modified: ${
 										el.LastModifiedDate
 									}\nLast Modified By: ${
 										el.LastModifiedUser.split("/")[
 											el.LastModifiedUser.split("/").length - 1
 										]
-									}\n`,
+									}\n`),
 								),
 							);
 							break;
