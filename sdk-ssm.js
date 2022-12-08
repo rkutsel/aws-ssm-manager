@@ -21,9 +21,11 @@ export const ssmSdk = {
 
 		ssm.putParameter(config, (err, data) => {
 			if (data) {
-				console.log(gradient.cristal(
-					`######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n######################`,
-				));
+				console.log(
+					gradient.cristal(
+						`######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n######################`,
+					),
+				);
 			}
 			if (err) {
 				console.log(
@@ -148,9 +150,11 @@ export const ssmSdk = {
 			} else {
 				ssm.putParameter(config, (err, data) => {
 					if (data) {
-						console.log(gradient.summer(
-							`######################\n# SECRET VALUE UPDATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n######################`,
-						));
+						console.log(
+							gradient.summer(
+								`######################\n# SECRET VALUE UPDATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n######################`,
+							),
+						);
 					}
 					if (err) {
 						console.log(
@@ -173,9 +177,11 @@ export const ssmSdk = {
 
 		ssm.deleteParameter(params, (err, data) => {
 			if (data) {
-				console.log(gradient.instagram(
-					`######################\n# SECRET DELETED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n######################`,
-				));
+				console.log(
+					gradient.instagram(
+						`######################\n# SECRET DELETED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n######################`,
+					),
+				);
 			}
 			if (err) {
 				console.log(
