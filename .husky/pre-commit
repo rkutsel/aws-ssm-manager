@@ -1,4 +1,13 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run lint
+echo "Running linting, hang tight..."
+if npm run lint; then 
+  echo "Linting looks good! \n" 
+fi
+
+echo "Running code formatter, hang tight..."
+
+if npm run format; then
+  echo "Formatting looks good! \n"
+fi
