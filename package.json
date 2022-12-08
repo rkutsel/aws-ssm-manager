@@ -12,7 +12,8 @@
   "scripts": {
     "start": "node app.js",
     "prepare": "husky install",
-    "lint": "npx rome check ./"
+    "lint": "npx rome check ./",
+    "format": "npx rome format --write ./"
   },
   "author": "Roman Kutsel",
   "license": "MIT",
