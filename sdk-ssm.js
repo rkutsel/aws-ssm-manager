@@ -80,7 +80,7 @@ export const ssmSdk = {
 						`RUNTIME ERROR!\n MESSAGE: ${err.message}\n, CODE: ${err.code}\n, TIME: ${err.time}\n`,
 					);
 				} else {
-									const paramsData = data.Parameters;
+					const paramsData = data.Parameters;
 
 					switch (format) {
 						case fmt.json: {
