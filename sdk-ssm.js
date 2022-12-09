@@ -75,12 +75,13 @@ export const ssmSdk = {
 
 		function _getRecursive() {
 			ssm.describeParameters(params, (err, data) => {
-				const paramsData = data.Parameters;
 				if (err) {
 					console.log(
 						`RUNTIME ERROR!\n MESSAGE: ${err.message}\n, CODE: ${err.code}\n, TIME: ${err.time}\n`,
 					);
 				} else {
+									const paramsData = data.Parameters;
+
 					switch (format) {
 						case fmt.json: {
 							console.log(data.Parameters);
