@@ -51,7 +51,7 @@ export const ssmSdk = {
 			} else {
 				console.log(
 					"##########################\n# DECRYPTED SECRET VALUE! #\n##########################",
-					`\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n# SECRETVALUE:${data.Parameter.Value}`, 
+					`\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n# SECRETVALUE:${data.Parameter.Value}`,
 					`\n# LAST MODIFIED: ${data.Parameter.LastModifiedDate}\n# CURRENT VERSION: ${data.Parameter.Version}\n#########################`,
 				);
 				init();
