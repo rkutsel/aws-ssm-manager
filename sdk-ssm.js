@@ -1,4 +1,4 @@
-import AWS from "aws-sdk";
+import { SSM } from "@aws-sdk/client-ssm";
 import init from "./main.js";
 import { ssmConfigOptions } from "./config.js";
 import { saveToFile } from "./parser.js";
@@ -8,7 +8,7 @@ export const ssmSdk = {
 	createOne: (secret, value, profile, region, tags = null) => {
 		process.env.AWS_PROFILE = profile;
 
-		const ssm = new AWS.SSM({ region: region });
+		const ssm = new SSM({ region: region });
 
 		const config = {
 			Name: secret,
@@ -37,7 +37,7 @@ export const ssmSdk = {
 	},
 	getDecrypted: (secret, profile, region) => {
 		process.env.AWS_PROFILE = profile;
-		const ssm = new AWS.SSM({ region: region });
+		const ssm = new SSM({ region: region });
 		const params = {
 			Name: secret,
 			WithDecryption: true,
@@ -63,7 +63,7 @@ export const ssmSdk = {
 		const fmt = ssmConfigOptions.format;
 		let jsonObj = [];
 
-		const ssm = new AWS.SSM({ region: region });
+		const ssm = new SSM({ region: region });
 		const params = {
 			ParameterFilters: [
 				{
@@ -134,7 +134,7 @@ export const ssmSdk = {
 	updateOne: (secret, value, profile, region) => {
 		process.env.AWS_PROFILE = profile;
 
-		const ssm = new AWS.SSM({ region: region });
+		const ssm = new SSM({ region: region });
 
 		const config = {
 			Name: secret,
@@ -172,7 +172,7 @@ export const ssmSdk = {
 	deleteOne: (secret, profile, region) => {
 		process.env.AWS_PROFILE = profile;
 
-		const ssm = new AWS.SSM({ region: region });
+		const ssm = new SSM({ region: region });
 
 		const params = {
 			Name: secret,
