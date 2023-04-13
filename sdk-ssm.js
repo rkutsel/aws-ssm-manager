@@ -61,7 +61,7 @@ export const ssmSdk = {
 	getAll: (type, format, profile, region) => {
 		process.env.AWS_PROFILE = profile;
 		const fmt = ssmConfigOptions.format;
-		let jsonObj = [];
+		const jsonObj = [];
 
 		const ssm = new SSM({ region: region });
 		const params = {
