@@ -1,6 +1,6 @@
 {
   "name": "aws-ssm-manager",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Manage Parameter Store Secrets in AWS",
   "repository": {
     "type": "git",
