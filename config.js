@@ -16,6 +16,11 @@ const customGradient = gradient([
 	"red", // named color
 ]);
 
+function getDate() {
+	const date = new Date().toLocaleString()
+	return date
+}
+
 export const ssmConfigOptions = {
 	format: { json: "JSON", text: "Text", file: "Save To File" },
 	regions: ["US-WEST-2", "US-EAST-1", "EU-WEST-1"],
@@ -23,4 +28,5 @@ export const ssmConfigOptions = {
 	override: false,
 	outputDir: "./output",
 	greeting: console.log(customGradient(greeting)),
+	timestamp: getDate()
 };

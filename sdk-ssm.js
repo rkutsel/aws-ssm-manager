@@ -23,7 +23,7 @@ export const ssmSdk = {
 			if (data) {
 				console.log(
 					gradient.cristal(
-						`######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n######################`,
+						`######################\n# NEW SECRET CREATED!\n# PROFILE: ${profile}\n# REGION: ${region}\n# SECRETNAME: ${secret}\n# TIMESTAMP: ${ssmConfigOptions.timestamp}\n######################`,
 					),
 				);
 			}
