@@ -17,8 +17,8 @@ const customGradient = gradient([
 ]);
 
 function getDate() {
-	const date = new Date().toLocaleString()
-	return date
+	const date = new Date().toLocaleString();
+	return date;
 }
 
 export const ssmConfigOptions = {
@@ -28,5 +28,5 @@ export const ssmConfigOptions = {
 	override: false,
 	outputDir: "./output",
 	greeting: console.log(customGradient(greeting)),
-	timestamp: getDate()
+	timestamp: getDate(),
 };

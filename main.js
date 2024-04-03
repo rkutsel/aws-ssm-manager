@@ -26,7 +26,7 @@ export default function init() {
 					} = answers;
 					if (toTag === "YES") {
 						askTag().then((answer) => {
-							const { tags: tags } = answer;
+							const { tags } = answer;
 							ssmSdk.createOne(secret, value, profile, region, tags);
 						});
 					} else {
